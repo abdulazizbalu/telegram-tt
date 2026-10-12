@@ -2773,6 +2773,21 @@ export interface LangPair {
   'ChatInsightsSummaryEmoji': undefined;
   'ChatInsightsSummaryStreak': undefined;
   'ChatInsightsShare': undefined;
+  'StorageUsageTitle': undefined;
+  'StorageUsageSubtitle': undefined;
+  'StorageUsageMediaCache': undefined;
+  'StorageUsageDescription': undefined;
+  'StorageUsageDevice': undefined;
+  'StorageUsageByType': undefined;
+  'StorageUsageEmpty': undefined;
+  'StorageUsageClear': undefined;
+  'StorageUsagePhotos': undefined;
+  'StorageUsageVideos': undefined;
+  'StorageUsageAudio': undefined;
+  'StorageUsageStickers': undefined;
+  'StorageUsageFiles': undefined;
+  'StorageUsageAvatars': undefined;
+  'StorageUsageOther': undefined;
 }
 
 export interface LangPairWithVariables<V = LangVariable> {
@@ -4678,6 +4693,9 @@ export interface LangPairWithVariables<V = LangVariable> {
   'ChatInsightsSummaryReplier': {
     'name': V;
   };
+  'StorageUsageDeviceUsed': {
+    'size': V;
+  };
 }
 
 export interface LangPairPlural {
@@ -5260,6 +5278,12 @@ export interface LangPairPluralWithVariables<V = LangVariable> {
     'count': V;
   };
   'ChatInsightsPartial': {
+    'count': V;
+  };
+  'StorageUsageScanning': {
+    'count': V;
+  };
+  'StorageUsageItems': {
     'count': V;
   };
 }
