@@ -991,6 +991,11 @@ export interface ActionPayloads {
     selectedAt?: number;
   } & WithTabId;
   closeHistoryCalendar: WithTabId | undefined;
+  loadChatCalendar: {
+    chatId: string;
+    untilDate?: number;
+  } & WithTabId;
+  resetChatCalendar: WithTabId | undefined;
   disableContextMenuHint: undefined;
   focusNextReply: WithTabId | undefined;
 
@@ -3121,6 +3126,26 @@ export interface ActionPayloads {
     chatId: string;
     messageId: number;
     scheduledAt: number;
+  } & WithTabId;
+  openMessageCardModal: {
+    chatId: string;
+    messageId: number;
+  } & WithTabId;
+  closeMessageCardModal: WithTabId | undefined;
+  openChatInsightsModal: {
+    chatId: string;
+  } & WithTabId;
+  closeChatInsightsModal: WithTabId | undefined;
+  loadChatInsights: {
+    chatId: string;
+  } & WithTabId;
+
+  openCatchUpModal: {
+    chatId: string;
+  } & WithTabId;
+  closeCatchUpModal: WithTabId | undefined;
+  loadCatchUp: {
+    chatId: string;
   } & WithTabId;
 
   openTwoFaCheckModal: WithTabId | undefined;

@@ -3659,3 +3659,10 @@
 "RemindMeNextWeek" = "Next week";
 "RemindMeCustom" = "Pick date and time";
 "ReminderSetForToast" = "Reminder set for **{time}** in Saved Messages";
+"ShareAsCard" = "Share as Card";
+"MessageCardTitle" = "Share as Card";
+"MessageCardShowSender" = "Show sender";
+"MessageCardCopy" = "Copy";
+"MessageCardSave" = "Save Image";
+"MessageCardSend" = "Send to Chat";
+"MessageCardCopiedToast" = "Image copied to clipboard";

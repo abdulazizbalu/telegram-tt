@@ -36,6 +36,7 @@ import {
   getMessageAudio,
   getMessageVideo,
   getUserFullName,
+  hasMessageMedia,
   hasMessageTtl,
   isActionMessage,
   isChatAdmin,
@@ -139,6 +140,7 @@ type StateProps = {
   canAppendTodoList?: boolean;
   canForward?: boolean;
   canSetReminder?: boolean;
+  canShareAsCard?: boolean;
   canFaveSticker?: boolean;
   canUnfaveSticker?: boolean;
   canCopy?: boolean;
@@ -222,6 +224,7 @@ const ContextMenuContainer = ({
   isCurrentUserPremium,
   canForward,
   canSetReminder,
+  canShareAsCard,
   canBuyPremium,
   canFaveSticker,
   canUnfaveSticker,
@@ -269,6 +272,7 @@ const ContextMenuContainer = ({
     pinMessage,
     openForwardMenu,
     openMessageReminderModal,
+    openMessageCardModal,
     openReplyMenu,
     faveSticker,
     unfaveSticker,
@@ -585,6 +589,11 @@ const ContextMenuContainer = ({
     openMessageReminderModal({ chatId: message.chatId, messageId: message.id });
   });
 
+  const handleShareAsCard = useLastCallback(() => {
+    closeMenu();
+    openMessageCardModal({ chatId: message.chatId, messageId: message.id });
+  });
+
   const handleFaveSticker = useLastCallback(() => {
     closeMenu();
     faveSticker({ sticker: message.content.sticker! });
@@ -821,6 +830,7 @@ const ContextMenuContainer = ({
         canAppendTodoList={canAppendTodoList}
         canForward={canForward}
         canSetReminder={canSetReminder}
+        canShareAsCard={canShareAsCard}
         canFaveSticker={canFaveSticker}
         canUnfaveSticker={canUnfaveSticker}
         canCopy={canCopy}
@@ -859,6 +869,7 @@ const ContextMenuContainer = ({
         onUnpin={handleUnpin}
         onForward={handleForward}
         onSetReminder={handleSetReminder}
+        onShareAsCard={handleShareAsCard}
         onDelete={handleDelete}
         onReport={handleReport}
         onFaveSticker={handleFaveSticker}
@@ -1062,6 +1073,8 @@ export default memo(withGlobal<OwnProps>(
       canAppendTodoList: !message.isEphemeral && canAppendTodoList,
       canForward: !isScheduled && canForward,
       canSetReminder: !isScheduled && !message.isEphemeral && !isLocal && canForward,
+      canShareAsCard: !isScheduled && !isAction && !message.isEphemeral && !isProtected
+        && Boolean(message.content.text?.text) && !hasMessageMedia(message),
       canFaveSticker: !message.isEphemeral && !isScheduled && canFaveSticker,
       canUnfaveSticker: !message.isEphemeral && !isScheduled && canUnfaveSticker,
       canCopy: (canCopyNumber || (!isProtected && canCopy)),

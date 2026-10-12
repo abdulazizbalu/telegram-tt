@@ -22,6 +22,8 @@ import AutoDeleteTimerModal from './autoDeleteTimer/AutoDeleteTimerModal.async';
 import BirthdaySetupModal from './birthday/BirthdaySetupModal.async';
 import BoostModal from './boost/BoostModal.async';
 import BrowserModal from './browser/BrowserModal.async';
+import CatchUpModal from './catchUp/CatchUpModal.async';
+import ChatInsightsModal from './chatInsights/ChatInsightsModal.async';
 import ChatInviteModal from './chatInvite/ChatInviteModal.async';
 import ChatlistModal from './chatlist/ChatlistModal.async';
 import CocoonModal from './cocoon/CocoonModal.async';
@@ -61,6 +63,7 @@ import InviteViaLinkModal from './inviteViaLink/InviteViaLinkModal.async';
 import LeaveGroupModal from './leaveGroup/LeaveGroupModal.async';
 import LocationAccessModal from './locationAccess/LocationAccessModal.async';
 import MapModal from './map/MapModal.async';
+import MessageCardModal from './messageCard/MessageCardModal.async';
 import MessageReminderModal from './messageReminder/MessageReminderModal.async';
 import MusicPickerModal from './musicPicker/MusicPickerModal.async';
 import OneTimeMediaModal from './oneTimeMedia/OneTimeMediaModal.async';
@@ -177,10 +180,13 @@ type ModalKey = keyof Pick<TabState,
   'rankModal' |
   'aiTonePreviewModal' |
   'autoDeleteTimerModal' |
-  'messageReminderModal'
+  'messageReminderModal' |
+  'messageCardModal' |
+  'chatInsightsModal' |
+  'catchUpModal'
 >;
 type WrappedModalKey = 'pollModal' | 'musicPicker' | 'mapModal' | 'safeLinkModalUrl' | 'autoDeleteTimerModal'
-  | 'messageReminderModal';
+  | 'messageReminderModal' | 'messageCardModal' | 'chatInsightsModal' | 'catchUpModal';
 type LegacyModalKey = Exclude<ModalKey, WrappedModalKey>;
 
 type ModalStateProps = {
@@ -212,6 +218,9 @@ const WRAPPED_MODAL_CLOSE_DURATIONS: Record<WrappedModalKey, number> = {
   safeLinkModalUrl: WRAPPED_MODAL_CLOSE_DURATION,
   autoDeleteTimerModal: WRAPPED_MODAL_CLOSE_DURATION,
   messageReminderModal: WRAPPED_MODAL_CLOSE_DURATION,
+  messageCardModal: WRAPPED_MODAL_CLOSE_DURATION,
+  chatInsightsModal: WRAPPED_MODAL_CLOSE_DURATION,
+  catchUpModal: WRAPPED_MODAL_CLOSE_DURATION,
 };
 
 type WrappedModalBoundaryProps<T> = {
@@ -332,6 +341,9 @@ const WRAPPED_MODALS: WrappedModalRegistry = {
   safeLinkModalUrl: SafeLinkModal,
   autoDeleteTimerModal: AutoDeleteTimerModal,
   messageReminderModal: MessageReminderModal,
+  messageCardModal: MessageCardModal,
+  chatInsightsModal: ChatInsightsModal,
+  catchUpModal: CatchUpModal,
 };
 
 const LEGACY_MODAL_KEYS = Object.keys(LEGACY_MODALS) as LegacyModalKey[];

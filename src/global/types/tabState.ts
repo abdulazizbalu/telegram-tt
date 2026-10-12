@@ -121,6 +121,9 @@ import type {
   ThreadId,
 } from '../../types';
 import type { BrowserState } from '../../types/browser';
+import type { CatchUpSummary } from '../../types/catchUp';
+import type { ChatInsights } from '../../types/chatInsights';
+import type { ChatCalendar } from '../../types/chatCalendar';
 import type { SearchResultKey } from '../../util/keys/searchResultKey';
 import type { RegularLangFnParameters } from '../../util/localization';
 import type { ProfileCollectionKey } from '../selectors/payments';
@@ -592,6 +595,7 @@ export type TabState = {
     zoom?: number;
   };
   historyCalendarSelectedAt?: number;
+  chatCalendar?: ChatCalendar;
   openedStickerSetShortName?: string;
   openedCustomEmojiSetIds?: string[];
 
@@ -1309,6 +1313,25 @@ export type TabState = {
   messageReminderModal?: {
     chatId: string;
     messageId: number;
+  };
+
+  messageCardModal?: {
+    chatId: string;
+    messageId: number;
+  };
+
+  chatInsightsModal?: {
+    chatId: string;
+    isLoading: boolean;
+    scannedCount: number;
+    totalCount?: number;
+    insights?: ChatInsights;
+  };
+
+  catchUpModal?: {
+    chatId: string;
+    isLoading: boolean;
+    summary?: CatchUpSummary;
   };
 
   isTwoFaCheckModalOpen?: true;

@@ -1000,6 +1000,15 @@ addActionHandler('openMessageReminderModal', (global, actions, payload): ActionR
 });
 
 addTabStateResetterAction('closeMessageReminderModal', 'messageReminderModal');
+addActionHandler('openMessageCardModal', (global, actions, payload): ActionReturnType => {
+  const { chatId, messageId, tabId = getCurrentTabId() } = payload;
+
+  return updateTabState(global, {
+    messageCardModal: { chatId, messageId },
+  }, tabId);
+});
+
+addTabStateResetterAction('closeMessageCardModal', 'messageCardModal');
 
 addActionHandler('openTwoFaCheckModal', (global, actions, payload): ActionReturnType => {
   const { tabId = getCurrentTabId() } = payload || {};

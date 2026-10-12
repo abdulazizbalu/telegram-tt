@@ -2738,6 +2738,13 @@ export interface LangPair {
   'RemindMeTomorrowMorning': undefined;
   'RemindMeNextWeek': undefined;
   'RemindMeCustom': undefined;
+  'ShareAsCard': undefined;
+  'MessageCardTitle': undefined;
+  'MessageCardShowSender': undefined;
+  'MessageCardCopy': undefined;
+  'MessageCardSave': undefined;
+  'MessageCardSend': undefined;
+  'MessageCardCopiedToast': undefined;
 }
 
 export interface LangPairWithVariables<V = LangVariable> {
