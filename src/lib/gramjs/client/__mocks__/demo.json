@@ -7324,6 +7324,8 @@
   "lng_reminder_messages": "Reminders",
   "Chat.SendScheduled": "Send Now",
   "Common.Done": "Done",
-  "JumpToDate": "Jump to Date"
+  "JumpToDate": "Jump to Date",
+  "SETTINGS": "Settings",
+  "DataSettings": "Data and Storage"
  }
 }
