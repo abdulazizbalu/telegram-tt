@@ -22,6 +22,8 @@ import './api/tonConnect';
 import './api/reactions';
 import './api/statistics';
 import './api/chatInsights';
+import './api/catchUp';
+import './api/chatCalendar';
 import './api/stories';
 import './ui/initial';
 import './ui/animations';
